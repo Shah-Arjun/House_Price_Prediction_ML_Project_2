@@ -44,9 +44,11 @@ rfr_model = joblib.load('rfr_model.pkl')
 # ============================
 st.set_page_config(page_title="House Price Predictor", layout="wide")
 
-st.title("🏠 House Price Prediction App")
+st.title("House Price Prediction App")
 st.write("This app uses machine learning to predicts the house price. For this you have to enter the following details of house and click on Predict button.")
 st.divider()
+
+
 
 
 # Input fields
@@ -90,7 +92,7 @@ input_data = [[
 ]]
 
 st.markdown("---")
-st.subheader("🔮 Predict Using Model")
+st.subheader("Predict Using Model")
 
 
 
@@ -100,13 +102,13 @@ st.subheader("🔮 Predict Using Model")
 btn1, btn2, btn3 = st.columns(3)
 
 with btn1:
-    predict_tree = st.button("🌳 Predict uding Decision Tree(R2=0.83)")
+    predict_tree = st.button("Predict uding Decision Tree(R2=0.83)")
 
 with btn2:
-    predict_linear = st.button("📈 Predict using Linear Regression(R2=0.68)")
+    predict_linear = st.button("Predict using Linear Regression(R2=0.68)")
 
 with btn3:
-    predict_rf = st.button("🌲 Predict using Random Forest(R2=0.87)")
+    predict_rf = st.button("Predict using Random Forest(R2=0.87)")
 
 st.markdown("---")
 
@@ -121,14 +123,14 @@ cl1, cl2, cl3 = st.columns(3)
 with cl1:
     if predict_tree:
         pred_dt = dt_model.predict(input_data)[0]
-        st.success(f"🌳 Decision Tree Price: ₹ {pred_dt:,.2f}")
+        st.success(f"Decision Tree Price: ₹ {pred_dt:,.2f}")
 
 with cl2:
     if predict_linear:
         pred_lr = lr_model.predict(input_data).item()
-        st.success(f"📈 Linear Regression Price: ₹ {pred_lr:,.2f}")
+        st.success(f"Linear Regression Price: ₹ {pred_lr:,.2f}")
 
 with cl3:
     if predict_rf:
         pred_rf = rfr_model.predict(input_data)[0]
-        st.success(f"🌲 Random Forest Price: ₹ {pred_rf:,.2f}")
+        st.success(f"Random Forest Price: ₹ {pred_rf:,.2f}")
